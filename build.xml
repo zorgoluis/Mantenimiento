@@ -1,8 +1,10 @@
 ﻿<!--    
 
+
+
     build.xml
-    Autor: David Arcos Cruz 
-	Universidad Politecnica de Chiapas
+    Autor: 
+
     Script para la construcción de aplicaciones web
     basadas en el servidor Tomcat e Hibernate.
 
