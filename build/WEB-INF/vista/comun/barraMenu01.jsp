@@ -9,6 +9,10 @@
 			<td class="clsMenuBarItem"><a href="solicitarListarRoles.do">Roles</td>
             <td>|</td>
 			<td class="clsMenuBarItem"><a href="solicitarListarPaises.do">Paises</td>
+			<td>|</td>
+			<td class="clsMenuBarItem"><a href="solicitarListarLugares.do">Lugares</td>
+			<td>|</td>
+			<td class="clsMenuBarItem"><a href="solicitarListarEstados.do">Estados</td>
             <td width="100%"></td>
         </tr>
     </table>
