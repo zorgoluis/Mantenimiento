@@ -41,6 +41,9 @@
 		<form-bean name="formaListadoPaises"
                    type="edu.uag.iidis.scec.vista.FormaListadoPaises">
         </form-bean>
+		<form-bean name="formaListadoLugares"
+                   type="edu.uag.iidis.scec.vista.FormaListadoLugares">
+        </form-bean>
 		<form-bean name="formaEliminarLugar"
                    type="edu.uag.iidis.scec.vista.FormaEliminarLugar">
         </form-bean>
@@ -49,6 +52,9 @@
         </form-bean>
 		 <form-bean name="formaListadoRecomendaciones"
                    type="edu.uag.iidis.scec.vista.FormaListadoRecomendaciones">
+        </form-bean>
+		<form-bean name="formaNuevoRecomendacion"
+                   type="edu.uag.iidis.scec.vista.FormaNuevoRecomendacion">
         </form-bean>
     </form-beans>
 
@@ -59,7 +65,7 @@
         <form-bean name="formaListadoEstados"
                    type="edu.uag.iidis.scec.vista.FormaListadoEstados">
         </form-bean>
-        <form-bean name="formaEliminarRol"
+        <form-bean name="formaEliminarEstado"
                    type="edu.uag.iidis.scec.vista.FormaEliminarEstado">
         </form-bean>
     </form-beans>
