@@ -65,7 +65,7 @@
         <form-bean name="formaListadoEstados"
                    type="edu.uag.iidis.scec.vista.FormaListadoEstados">
         </form-bean>
-        <form-bean name="formaEliminarRol"
+        <form-bean name="formaEliminarEstado"
                    type="edu.uag.iidis.scec.vista.FormaEliminarEstado">
         </form-bean>
     </form-beans>
