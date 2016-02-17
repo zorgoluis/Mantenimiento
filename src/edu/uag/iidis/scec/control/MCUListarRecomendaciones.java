@@ -67,6 +67,5 @@ public final class MCUListarRecomendaciones
             saveErrors(request, errores);
             return ( mapping.findForward("fracaso") );
         }
-
     }
 }

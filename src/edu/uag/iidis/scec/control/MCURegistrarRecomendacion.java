@@ -6,7 +6,7 @@ import edu.uag.iidis.scec.servicios.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import java.util.Collection;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -16,14 +16,16 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.MappingDispatchAction;
-
-
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.text.DateFormat;
 
 public final class MCURegistrarRecomendacion 
         extends MappingDispatchAction {
 
     private Log log = LogFactory.getLog(MCURegistrarUsuario.class);
 
+    
 
     public ActionForward solicitarRegistroRecomendacion(
                 ActionMapping mapping,
@@ -35,8 +37,30 @@ public final class MCURegistrarRecomendacion
         if (log.isDebugEnabled()) {
             log.debug(">solicitarRegistroRecomendacion");
         }
+        FormaNuevoRecomendacion forma = (FormaNuevoRecomendacion)form;
 
-        return (mapping.findForward("exito"));
+        ManejadorLugares mr = new ManejadorLugares();
+        Collection resultado = mr.listarLugares();
+
+        ActionMessages errores = new ActionMessages();
+        if (resultado != null) {
+            if ( resultado.isEmpty() ) {
+                errores.add(ActionMessages.GLOBAL_MESSAGE,
+                    new ActionMessage("errors.registroVacio"));
+                saveErrors(request, errores);
+            } else {
+                forma.setLugares(resultado);
+            }
+            return (mapping.findForward("exito"));
+        } else {
+            log.error("Ocurrió un error de infraestructura");
+            errores.add(ActionMessages.GLOBAL_MESSAGE,
+                        new ActionMessage("errors.infraestructura"));                
+            saveErrors(request, errores);
+            return ( mapping.findForward("fracaso") );
+        }
+
+        //return (mapping.findForward("exito"));
     }
 
 
@@ -60,12 +84,13 @@ public final class MCURegistrarRecomendacion
             return (mapping.findForward("cancelar"));
         }
 
-        
+        Date date = new Date();
+        DateFormat hourdateFormat = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
         // Se obtienen los datos para procesar el registro
         FormaNuevoRecomendacion forma = (FormaNuevoRecomendacion)form;
 
-        Recomendacion recomendacion = new Recomendacion(forma.getNombre(),
-                          forma.getUsuario(),forma.getFecha(),forma.getComentario(),forma.getCalificacion());
+        Recomendacion recomendacion = new Recomendacion(forma.getNombre(),forma.getEstado(),
+                          "Default",hourdateFormat.format(date),forma.getComentario(),forma.getCalificacion());
 
         ManejadorRecomendaciones mr = new ManejadorRecomendaciones();
         int resultado = mr.crearRecomendacion(recomendacion);
