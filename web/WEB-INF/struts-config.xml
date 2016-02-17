@@ -41,6 +41,21 @@
 		<form-bean name="formaListadoPaises"
                    type="edu.uag.iidis.scec.vista.FormaListadoPaises">
         </form-bean>
+		<form-bean name="formaListadoLugares"
+                   type="edu.uag.iidis.scec.vista.FormaListadoLugares">
+        </form-bean>
+		<form-bean name="formaEliminarLugar"
+                   type="edu.uag.iidis.scec.vista.FormaEliminarLugar">
+        </form-bean>
+		<form-bean name="formaNuevoLugar"
+                   type="edu.uag.iidis.scec.vista.FormaNuevoLugar">
+        </form-bean>
+		 <form-bean name="formaListadoRecomendaciones"
+                   type="edu.uag.iidis.scec.vista.FormaListadoRecomendaciones">
+        </form-bean>
+		<form-bean name="formaNuevoRecomendacion"
+                   type="edu.uag.iidis.scec.vista.FormaNuevoRecomendacion">
+        </form-bean>
     </form-beans>
 
     <form-beans>
@@ -50,7 +65,7 @@
         <form-bean name="formaListadoEstados"
                    type="edu.uag.iidis.scec.vista.FormaListadoEstados">
         </form-bean>
-        <form-bean name="formaEliminarRol"
+        <form-bean name="formaEliminarEstado"
                    type="edu.uag.iidis.scec.vista.FormaEliminarEstado">
         </form-bean>
     </form-beans>
@@ -96,14 +111,64 @@
             <forward name="exito" path="/WEB-INF/vista/pantallas/plantilla01.jsp?c=formaListadoPaises.jsp"/>
             <forward name="fracaso" path="/WEB-INF/vista/pantallas/pantallaInicio.jsp"/>
         </action>
+		<action path="/solicitarListarEstados"
+                type="edu.uag.iidis.scec.control.MCUListarEstados"
+                parameter="solicitarListarEstados"
+                name="formaListadoEstados"
+                scope="request"
+                validate="false">
+            <forward name="exito" path="/WEB-INF/vista/pantallas/plantilla01.jsp?c=formaListadoEstados.jsp"/>
+            <forward name="fracaso" path="/WEB-INF/vista/pantallas/pantallaInicio.jsp"/>
+        </action>
+		
         <action path="/solicitarRegistroPais"
                 type="edu.uag.iidis.scec.control.MCURegistrarPais"
                 parameter="solicitarRegistroPais"
                 name="formaNuevoPais"
                 scope="request"
                 validate="false">
-            <forward name="exito" path="/WEB-INF/vista/pantallas/plantilla01.jsp?c=formaNuevoPäis.jsp"/>
+            <forward name="exito" path="/WEB-INF/vista/pantallas/plantilla01.jsp?c=formaNuevoPais.jsp"/>
         </action>
+		<action path="/solicitarListarLugares"
+                type="edu.uag.iidis.scec.control.MCUListarLugares"
+                parameter="solicitarListarLugares"
+                name="formaListadoLugares"
+                scope="request"
+                validate="false">
+            <forward name="exito" path="/WEB-INF/vista/pantallas/plantilla01.jsp?c=formaListadoLugares.jsp"/>
+            <forward name="fracaso" path="/WEB-INF/vista/pantallas/pantallaInicio.jsp"/>
+        </action>
+		<action path="/solicitarRegistroLugar"
+                type="edu.uag.iidis.scec.control.MCURegistrarLugar"
+                parameter="solicitarRegistroLugar"
+                name="formaNuevoLugar"
+                scope="request"
+                validate="false">
+            <forward name="exito" path="/WEB-INF/vista/pantallas/plantilla01.jsp?c=formaNuevoLugar.jsp"/>
+        </action>
+
+         <!-- RECOMENDACIONES -->
+
+        <action path="/solicitarListarRecomendaciones"
+                type="edu.uag.iidis.scec.control.MCUListarRecomendaciones"
+                parameter="solicitarListarRecomendaciones"
+                name="formaListadoRecomendaciones"
+                scope="request"
+                validate="false">
+            <forward name="exito" path="/WEB-INF/vista/pantallas/plantilla01.jsp?c=formaListadoRecomendaciones.jsp"/>
+            <forward name="fracaso" path="/WEB-INF/vista/pantallas/pantallaInicio.jsp"/>
+        </action>
+        <action path="/solicitarRegistroRecomendacion"
+                type="edu.uag.iidis.scec.control.MCURegistrarRecomendacion"
+                parameter="solicitarRegistroRecomendacion"
+                name="formaNuevoRecomendacion"
+                scope="request"
+                validate="false">
+            <forward name="exito" path="/WEB-INF/vista/pantallas/plantilla01.jsp?c=formaNuevoRecomendacion.jsp"/>
+        </action>
+
+        <!--RECOMENDACIONES -->
+		
 		<action path="/procesarEliminarRol"
                 type="edu.uag.iidis.scec.control.MCUEliminarRol"
                 parameter="procesarEliminarRol"
@@ -147,7 +212,44 @@
             <forward name="exito" path="/WEB-INF/vista/pantallas/pantallaBienvenida.jsp"/>
             <forward name="volver" path="solicitarRegistro.do" redirect="true"/>
        </action>
-       <action path="/procesarRegistroRol"
+       <action path="/procesarRegistroPais"
+                type="edu.uag.iidis.scec.control.MCURegistrarPais"
+                parameter="procesarRegistroPais"
+                name="formaNuevoPais"
+                scope="request"
+                validate="true"
+                input="/WEB-INF/vista/pantallas/plantilla01.jsp?c=formaNuevoPais.jsp" >
+            <forward name="cancelar" path="/solicitarListarRoles.do" redirect="true"/>
+            <forward name="exito" path="/WEB-INF/vista/pantallas/pantallaBienvenida.jsp"/>
+            <forward name="volver" path="solicitarRegistroRol.do" redirect="true"/>
+       </action>
+	   <action path="/procesarRegistroLugar"
+                type="edu.uag.iidis.scec.control.MCURegistrarLugar"
+                parameter="procesarRegistroLugar"
+                name="formaNuevoLugar"
+                scope="request"
+                validate="true"
+                input="/WEB-INF/vista/pantallas/plantilla01.jsp?c=formaNuevoLugar.jsp" >
+            <forward name="cancelar" path="/solicitarListarRoles.do" redirect="true"/>
+            <forward name="exito" path="/WEB-INF/vista/pantallas/pantallaBienvenida.jsp"/>
+            <forward name="volver" path="solicitarRegistroRol.do" redirect="true"/>
+       </action>
+
+       <!--RECOMENDACIONES -->
+       <action path="/procesarRegistroRecomendacion"
+                type="edu.uag.iidis.scec.control.MCURegistrarRecomendacion"
+                parameter="procesarRegistroRecomendacion"
+                name="formaNuevoRecomendacion"
+                scope="request"
+                validate="true"
+                input="/WEB-INF/vista/pantallas/plantilla01.jsp?c=formaNuevoRecomendacion.jsp" >
+            <forward name="cancelar" path="/solicitarListarRecomendaciones.do" redirect="true"/>
+            <forward name="exito" path="/WEB-INF/vista/pantallas/pantallaBienvenida.jsp"/>
+            <forward name="volver" path="solicitarRegistroRecomendacion.do" redirect="true"/>
+       </action>
+        <!--RECOMENDACIONES -->
+	   
+	   <action path="/procesarRegistroRol"
                 type="edu.uag.iidis.scec.control.MCURegistrarRol"
                 parameter="procesarRegistroRol"
                 name="formaNuevoRol"

@@ -1,8 +1,8 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">  
 
 <hibernate-mapping>
-    <class name="edu.uag.iidis.scec.modelo.Estado"
-           table="Estados"
+    <class name="edu.uag.iidis.scec.modelo.Lugar"
+           table="Lugares"
            dynamic-update="false"
            dynamic-insert="false">
 
@@ -15,13 +15,27 @@
         </id>
 
         <property name="nombre"
-            type="java.lang.String"
+            column="Nombre"
+			type="java.lang.String"
             not-null="true"
             unique="true" />
 
         <property name="descripcion"
+			column="Descripcion"
             type="java.lang.String" />
-
+			
+		<property name="poblacion"
+			column="Poblacion"
+            type="java.lang.Long" />
+			
+		<property name="coordenadas"
+			column="Coordenadas"
+            type="java.lang.String"/>
+			
+		<property name="estado"
+			column="Estado"
+            type="java.lang.String"/>
+			
     </class>
 
 </hibernate-mapping>
