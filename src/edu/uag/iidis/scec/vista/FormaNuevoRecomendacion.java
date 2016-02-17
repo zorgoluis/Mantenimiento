@@ -1,7 +1,7 @@
 package edu.uag.iidis.scec.vista;
 
 import javax.servlet.http.HttpServletRequest;
-
+import java.util.Collection;
 import org.apache.struts.action.ActionError;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMapping;
@@ -18,16 +18,24 @@ public final class FormaNuevoRecomendacion
 
     private Long id;
     private String nombre;
+    private String estado;
     private String usuario;
     private String fecha;
     private String comentario;
     private Long calificacion;
     private String descripcion;
+    private Collection lugares;
+    private int contador;
+
+   
 
     
 
     public String getNombre() {
         return (this.nombre);
+    }
+    public String getEstado() {
+        return (this.estado);
     }
     public String getUsuario() {
         return (this.usuario);
@@ -45,10 +53,17 @@ public final class FormaNuevoRecomendacion
         return (this.descripcion);
     }
 
+    public Collection getLugares() {
+        return (this.lugares);
+    }
 
+    
 	
 	public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
     public void setUsuario(String usuario) {
         this.usuario = usuario;
@@ -64,6 +79,14 @@ public final class FormaNuevoRecomendacion
     }
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public void setLugares(Collection lugares) {
+        this.lugares = lugares;
+        if (lugares != null) {
+          this.contador = lugares.size();
+        } else
+          this.contador = -1;
     }
 
     public void reset(ActionMapping mapping,
