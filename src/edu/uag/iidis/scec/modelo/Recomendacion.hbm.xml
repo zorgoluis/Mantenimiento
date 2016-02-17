@@ -20,6 +20,10 @@
             not-null="true"
             unique="true" />
 
+        <property name="estado"
+        column="Estado"
+        type="java.lang.String" />
+
         <property name="usuario"
 			column="Usuario"
             type="java.lang.String" />

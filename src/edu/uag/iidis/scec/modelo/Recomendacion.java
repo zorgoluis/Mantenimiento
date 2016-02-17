@@ -2,7 +2,7 @@ package edu.uag.iidis.scec.modelo;
 
 import java.io.Serializable;
 import java.util.*;
-
+import java.util.Date;
 
 /**
  * 
@@ -18,6 +18,7 @@ public class Recomendacion extends ClaseBase
 
     private Long id;
     private String nombre;
+    private String estado;
     private String usuario;
 	private String fecha;
 	private String comentario;
@@ -31,8 +32,9 @@ public class Recomendacion extends ClaseBase
         this.id = id;
     }
 
-    public Recomendacion(String nombre, String usuario,String fecha,String comentario,Long calificacion){
+    public Recomendacion(String nombre,String estado, String usuario,String fecha,String comentario,Long calificacion){
         this.nombre=nombre;
+        this.estado=estado;
         this.usuario=usuario;
 		this.fecha=fecha;
 		this.comentario=comentario;
@@ -63,6 +65,9 @@ public class Recomendacion extends ClaseBase
     public String getNombre() {
         return this.nombre;
     }
+    public String getEstado() {
+        return this.estado;
+    }
 	public String getUsuario() {
         return this.usuario;
     }
@@ -82,6 +87,9 @@ public class Recomendacion extends ClaseBase
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 	public void setUsuario(String usuario) {
         this.usuario = usuario;
